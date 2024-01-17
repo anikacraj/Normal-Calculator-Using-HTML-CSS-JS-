@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculator</h1>
+
+    <div class="bdy">
+     
+        <center>
+            <div class="input">
+                <input type="text" id="result" maxlength="16" onkeydown="return false">
+            </div>
+        </center>
+      <center> <div class="container">
+        
+        <div class="first"> 
+            <input type="button" class="b" value="AC"  onclick="clearDisplay()">
+            <input type="button" class="btn-1" value="DEL" onclick="del()">
+            <input type="button" class="btn" value="%" onclick="dis('%')">
+            <input type="button" class="bt" value="/" onclick="dis('/')">
+           
+      </div>
+     
+         <div class=""first">
+            <input type="button" class="btn" value="7" onclick="dis('7')">
+            <input type="button" class="btn" value="8" onclick="dis('8')">
+            <input type="button" class="btn" value="9" onclick="dis('9')">
+            <input type="button" class="bt" value="x" onclick="dis('*')">
+          
+           
+         </div>
+        
+          <div class=""first">
+            <input type="button" class="btn" value="4" onclick="dis('4')">
+            <input type="button" class="btn" value="5" onclick="dis('5')">
+            <input type="button" class="btn" value="6" onclick="dis('6')">
+            <input type="button"  class="bt" value="-" onclick="dis('-')">
+         
+           
+          </div>
+          
+         <div class=""first">
+            <input type="button" class="btn" value="1" onclick="dis('1')">
+            <input type="button" class="btn" value="2" onclick="dis('2')">
+            <input type="button" class="btn" value="3" onclick="dis('3')">
+            <input type="button" class="bt" value="+" onclick="dis('+')">
+          
+         </div>
+         <div class=""first">
+            <input type="button" class="btn" value="0" onclick="dis('0')">
+            <input type="button" class="btn" value="." onclick="dis('.')">
+            <input type="button" class="btn" value="00" onclick="dis('00')">
+            <input type="button" class="bt" value="=" onclick="calculate()">
+          
+         </div>
+        </div>
+        </center>
+   
+       </div>
+    <script>
+   
+        function dis(value){
+            document.getElementById('result').value +=value;
+        }
+      function clearDisplay(){
+        document.getElementById('result').value='';
+      }
+        function del() {
+         var value =  document.getElementById('result').value;
+            document.getElementById('result').value = value.substring(0, value.length - 1);
+        }
+        function calculate() {
+            var result = document.getElementById('result');
+            try {
+                result.value = eval(result.value);
+            } catch (error) {
+                result.value = 'Error';
+            }
+        }
+       
+        document.addEventListener("keydown",function(event){
+            var key=event.key;
+            if(key >='0' && key<=9){
+            dis(key); }
+        else if(key==='') {
+        clearDisplay();
+        }
+    else if(key==='.'){
+    dis('.')
+        }
+        else if(key==='+' || key==='-' || key==='*' || key==="/"){
+            dis(key);
+
+        }
+        else if(key===Enter){
+            calculate();
+        }
+        else if(key==Backspace){
+            del();
+        }
+    });
+       
+    </script>
+   
+</body>
+</html>

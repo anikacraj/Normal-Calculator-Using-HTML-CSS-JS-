@@ -1,2 +1,2 @@
 # Normal-Calculator-Using-HTML-CSS-JS-
-you can
+YOU CAN EASILY CALCULATE.
